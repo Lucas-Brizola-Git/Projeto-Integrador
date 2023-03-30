@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+
+{% block 'titulo' %} 
+
+
+{% endblock %}
+
+{% block 'conteudo' %}
+<br>
+{% if status == '1' %}
+    <div class="alert alert-danger" role="alert">
+        Email ou senha inválido.
+    </div>
+{% endif %}
+
+{% if status == '2' %}
+    <div class="alert alert-danger" role="alert">
+        Faça login antes de tentar acessar o sistema.
+    </div>
+{% endif %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md">
+            <h1>LogIn</h1>
+            <hr>
+
+            <form method="POST" action = "{% url 'valida_login' %}">{%csrf_token%}
+                <label>Email</label>
+                <input name= "email" class="form-control" type="email" placeholder="Email...">
+                <br>
+                <label>Senha</label>
+                <input name= "senha" class="form-control" type="password" placeholder="Senha...">
+                <br>
+                <input class="btn btn-info btn-lg" type="submit" value="Entrar">
+                <a href="{% url 'cadastro' %}" class="btn btn-warning btn-lg" type="submit" value="enviar">Cadastrar-se</a>
+            </form>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+{% endblock %}

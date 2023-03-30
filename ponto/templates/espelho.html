@@ -1,0 +1,78 @@
+{% extends 'base.html'%}
+
+{% block 'titulo' %} {% endblock %}
+
+{% block 'conteudo' %}
+
+{% for ponto in pontos %}
+  {{ponto}}
+
+
+{% endfor %}
+
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Data</th>
+          <th scope="col">Dia</th>
+          <th scope="col">Ent1</th>
+          <th scope="col">Sai1</th>
+          <th scope="col">Ent2</th>
+          <th scope="col">Sai2</th>
+          <th scope="col">Ent3</th>
+          <th scope="col">Sai3</th>
+          <th scope="col">Ent4</th>
+          <th scope="col">Sai4</th>
+          <th scope="col">H. Trab</th>
+          <th scope="col">Ex. Exec</th>
+          <th scope="col">Ex. Pagas</th>
+          <th scope="col">Ex. Comp</th>
+          <th scope="col">Atrasos</th>
+          <th scope="col">Faltas</th>
+          <th scope="col">Abonos</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        {% with firstname=1 %}
+          {{firstname}}
+          {% endwith %}
+        {%for ponto in pontos %}
+          {% ifchanged ponto.date%}
+          
+            {% if forloop.first %}
+              <tr>
+                <th scope="row">{{ponto.date}}</th>
+                <td>{{ponto.chekin}}</td>
+            {%  else %}
+              {% if i != 8%}
+                {% for i in firstname %}
+                <th scope="row">{{ponto.date}}</th>
+                <td>{{ponto.chekin}}</td>
+                {% endfor %}
+              {% endif %}
+              <td>htrab</td>
+              <td>exexec</td>
+              <td>expag</td>
+              <td>excomp</td>
+              <td>atr</td>
+              <td>flt</td>
+              <td>abn</td>
+              </tr> 
+              <tr>
+                <th scope="row">{{ponto.date}}</th>
+                <td>{{ponto.chekin}}</td>
+            {% endif %}      
+          {% else %}
+            <td>{{ponto.chekin}}</td>
+          {% endifchanged%}  
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-1"></div>
+</div>
+{% endblock %}
