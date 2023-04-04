@@ -4,7 +4,7 @@ from .models import Usuario
 from django.shortcuts import redirect
 from hashlib import sha256
 
-
+#teste
 #satus
 #1 - nome ou email em branco
 #2 - senha menor que 8 caracteres
