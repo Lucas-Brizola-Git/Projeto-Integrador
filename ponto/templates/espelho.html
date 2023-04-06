@@ -37,9 +37,7 @@
       </thead>
       <tbody>
         
-        {% with firstname=1 %}
-          {{firstname}}
-          {% endwith %}
+        
         {%for ponto in pontos %}
           {% ifchanged ponto.date%}
           
